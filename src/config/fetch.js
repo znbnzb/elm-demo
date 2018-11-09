@@ -10,7 +10,7 @@ export default async (url = '', data = {}, type = 'GET', method = 'fatch') => {
     let dataStr = ''; //数据拼接字符串
     //forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数
     Object.keys(data).forEach(key => {
-      dataStr += key = '=' + data[key] + '&';
+      dataStr += key + '=' + data[key] + '&';
     })
     if (dataStr !== '') {
       //substr() 的参数指定的是子串的开始位置和长度

@@ -1,10 +1,3 @@
-import {
-  parse
-} from "path";
-import {
-  request
-} from "https";
-
 /**
  * 存储localStorage  类似于cookie
  * localStorage - 没有时间限制的数据存储
