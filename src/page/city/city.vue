@@ -104,7 +104,7 @@ export default {
         this.placeHistory.push(choosePlace);
       }
       setStore("placeHistory", this.placeHistory);
-      //路径跳转需要完善
+
       this.$router.push({ path: "/", query: { geohash } });
     }
   }
