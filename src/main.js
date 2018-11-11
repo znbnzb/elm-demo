@@ -21,6 +21,7 @@ if ('addEventListener' in document) {
     FastClick.attach(document.body);
   }, false);
 }
+
 Vue.use(VueRouter)
 
 

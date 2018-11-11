@@ -35,3 +35,32 @@ export const groupcity = () => fetch('/v1/cities', {
  */
 
 export const currentcity = number => fetch('/v1/cities/' + number);
+
+
+/**
+ * 获取用户信息
+ */
+
+export const getUser = () => fetch('/v1/user', {
+  user_id: getStore('user_id')
+});
+
+
+/**
+ * 获取搜索地址
+ */
+export const searchplace = (cityid, value) => fetch('/v1/pois', {
+  type: 'search',
+  city_id: cityid,
+  keyword: value
+})
+/**
+ * 获取search页面搜索结果
+ */
+
+export const searchRestaurant = (geohash, keyword) => fetch('/v4/restaurants', {
+  'extras[]': 'restaurant_activity',
+  geohash,
+  keyword,
+  type: 'search'
+});
