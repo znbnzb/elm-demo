@@ -26,7 +26,9 @@
         </ul>
 
         <!-- 清空所有 -->
-        <footer class="clear_all_history">清空所有</footer>
+        <footer v-if="historytitle && placelist.length" class="clear_all_history" @click="clearAll">清空所有</footer>
+        <!-- 搜索无结果 -->
+        <div class="search_none_place" v-if="placeNone">很抱歉！无搜索结果</div>
     </div>
 </template>
 
@@ -65,7 +67,6 @@ export default {
       //获取所有搜索历史记录
       if (getStore("placeHistory")) {
         this.placelist = JSON.parse(getStore("placeHistory"));
-        console.log(this.placelist);
       } else {
         this.placelist = [];
       }
@@ -77,7 +78,7 @@ export default {
         searchplace(this.cityid, this.inputValue).then(res => {
           this.historytitle = false;
           this.placelist = res;
-          console.log(this.placelist);
+
           this.placeNone = res.length ? false : true;
         });
       }
@@ -104,8 +105,12 @@ export default {
         this.placeHistory.push(choosePlace);
       }
       setStore("placeHistory", this.placeHistory);
-
-      this.$router.push({ path: "/", query: { geohash } });
+      //路径跳转需要完善
+      this.$router.push({ path: "/msite", query: { geohash } });
+    },
+    clearAll() {
+      removeStore("placeHistory");
+      this.initData();
     }
   }
 };
@@ -182,5 +187,14 @@ export default {
   text-align: center;
   line-height: 2rem;
   background-color: #fff;
+}
+//无搜索结果
+.search_none_place {
+  margin: 0 auto;
+  text-align: center;
+  @include font(0.65rem, 1.75rem);
+  color: #333;
+  background-color: #fff;
+  text-indent: 0.5rem;
 }
 </style>
