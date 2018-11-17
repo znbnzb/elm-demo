@@ -11,13 +11,11 @@ let baseUrl = '';
 let routerMode = 'hash';
 let imgBaseUrl = '';
 
+// development   production
+if (process.env.NODE_ENV == 'production') {
+  imgBaseUrl = '/img/';
 
-if (process.env.NODE_ENV == 'development') {
-  // imgBaseUrl = '/img/';
-  baseUrl = '//elm.cangdu.org';
-  imgBaseUrl = '//elm.cangdu.org/img/';
-
-} else if (process.env.NODE_ENV == 'production') {
+} else if (process.env.NODE_ENV == 'development') {
   baseUrl = '//elm.cangdu.org';
   imgBaseUrl = '//elm.cangdu.org/img/';
 }
