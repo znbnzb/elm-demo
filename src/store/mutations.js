@@ -1,8 +1,9 @@
 import {
+  RECORD_ADDRESS,
   RECORD_USERINFO,
   GET_USERINFO,
   OUT_LOGIN,
-
+  SAVE_GEOHASH,
 } from './mutation-types.js'
 
 import {
@@ -11,7 +12,14 @@ import {
 
 
 export default {
-
+  // 记录当前经度纬度
+  [RECORD_ADDRESS](state, {
+    latitude,
+    longitude
+  }) {
+    state.latitude = latitude;
+    state.longitude = longitude;
+  },
   // 记录用户信息
   [RECORD_USERINFO](state, info) {
     state.userInfo = info;
@@ -37,6 +45,10 @@ export default {
   [OUT_LOGIN](state) {
     state.userInfo = {};
     state.login = false;
-  }
+  },
+  //保存geohash
+  [SAVE_GEOHASH](state, geohash) {
+    state.geohash = geohash;
+  },
 
 }

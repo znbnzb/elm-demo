@@ -98,7 +98,7 @@ export const loadMore = (element, callback) => {
         loadMore();
         moveEnd();
       } else {
-        cancelAnimationFrame(requestFrame);
+        cancelAnimationFrame(requestFram);
         //为了防止鼠标抬起时已经渲染好数据丢失从而导致重新获取数据，应重新获取dom的高度
         height = element.offsetHeight;
         loadMore();
@@ -118,7 +118,7 @@ export const loadMore = (element, callback) => {
  * 显示返回顶部按钮，开始、结束、运动 三个过程中调用函数判断是否达到目标点
  */
 export const showBack = callback => {
-  let request;
+  let requestFram;
   let oldScrollTop;
 
   document.addEventListener('scroll', () => {
