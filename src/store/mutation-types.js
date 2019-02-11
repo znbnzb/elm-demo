@@ -1,4 +1,9 @@
-export const RECORD_ADDRESS = 'RECORD_ADDRESS'
+export const RECORD_ADDRESS = 'RECORD_ADDRESS' //记录地址
+export const ADD_CART = 'ADD_CART' //添加购物车数量
+export const REDUCE_CART = 'REDUCE_CART' //减少购物车数量
+export const INIT_BUYCART = 'INIT_BUYCART' //添加购物车
+export const CLEAR_CART = 'CLEAR_CART'
+export const RECORD_SHOPDETAIL = 'RECORD_SHOPDETAIL'
 export const RECORD_USERINFO = 'RECORD_USERINFO'
 export const GET_USERINFO = 'GET_USERINFO'
 export const OUT_LOGIN = 'OUT_LOGIN'

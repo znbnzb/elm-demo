@@ -1,50 +1,50 @@
 <template>
-    <div>
-        <!-- 头部标题 -->
-        <head-top signin-up='msite'>
-            <!-- 图标 -->
-            <router-link :to="'/search/geohash'" class="link_search" slot="search">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                    <circle cx="8" cy="8" r="7" stroke="rgb(255,255,255)" stroke-width="1" fill="none" />
-                    <line x1="14" y1="14" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:2" />
-                </svg>
-            </router-link>
-            <!-- 标题 -->
-            <router-link to="/home" slot="msite-title" class="msite_title">
-                <span class="title_text ellipsis">{{msiteTitle}}</span>
-            </router-link>
-        </head-top>
+  <div>
+    <!-- 头部标题 -->
+    <head-top signin-up='msite'>
+      <!-- 图标 -->
+      <router-link :to="'/search/geohash'" class="link_search" slot="search">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <circle cx="8" cy="8" r="7" stroke="rgb(255,255,255)" stroke-width="1" fill="none" />
+          <line x1="14" y1="14" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:2" />
+        </svg>
+      </router-link>
+      <!-- 标题 -->
+      <router-link to="/home" slot="msite-title" class="msite_title">
+        <span class="title_text ellipsis">{{msiteTitle}}</span>
+      </router-link>
+    </head-top>
 
-        <!-- 食品分类导航 -->
-        <nav class="msite_nav">
-            <div class="swiper-container" v-if="foodTypes.length">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide food_types_container" v-for="(item,index) in foodTypes" :key="index">
-                        <router-link :to="{path:'/food',query:{geohash,title:foodItem.title,restaurant_category_id:getCategoryId(foodItem.link)}}" v-for="foodItem in item" :key="foodItem.id" class="link_to_food">
-                            <figure>
-                                <img :src="imgBaseUrl + foodItem.image_url" alt="">
-                                <figcaption>{{foodItem.title}}</figcaption>
-                            </figure>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            <!-- 组件没有出来前显示 -->
-            <img src="../../images/fl.svg" class="fl_back animation_opactiy" v-else>
-        </nav>
-        <!-- 附近商家 -->
-        <div class="shop_list_container">
-            <header class="shop_header">
-                <svg class="shop_icon">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
-                </svg>
-                <span class="shop_header_title">附近商家</span>
-            </header>
-            <shop-list v-if="hasGetData" :geohash="geohash"></shop-list>
+    <!-- 食品分类导航 -->
+    <nav class="msite_nav">
+      <div class="swiper-container" v-if="foodTypes.length">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide food_types_container" v-for="(item,index) in foodTypes" :key="index">
+            <router-link :to="{path:'/food',query:{geohash,title:foodItem.title,restaurant_category_id:getCategoryId(foodItem.link)}}" v-for="foodItem in item" :key="foodItem.id" class="link_to_food">
+              <figure>
+                <img :src="imgBaseUrl + foodItem.image_url" alt="">
+                <figcaption>{{foodItem.title}}</figcaption>
+              </figure>
+            </router-link>
+          </div>
         </div>
-        <foot-guide></foot-guide>
+        <div class="swiper-pagination"></div>
+      </div>
+      <!-- 组件没有出来前显示 -->
+      <img src="../../images/fl.svg" class="fl_back animation_opactiy" v-else>
+    </nav>
+    <!-- 附近商家 -->
+    <div class="shop_list_container">
+      <header class="shop_header">
+        <svg class="shop_icon">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
+        </svg>
+        <span class="shop_header_title">附近商家</span>
+      </header>
+      <shop-list v-if="hasGetData" :geohash="geohash"></shop-list>
     </div>
+    <foot-guide></foot-guide>
+  </div>
 </template>
 
 <script>
@@ -88,7 +88,7 @@ export default {
     //获取导航食品列表
     msiteFoodTypes(this.geohash)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         //   console.log("导航食品长度=" + res.length);
         let resLength = res.length; //导航食品的长度
         let resArr = [...res]; //返回一个新的数组
